@@ -1,0 +1,14 @@
+development:
+  adapter: postgresql
+  database: fec-graph-search_dev
+  host: localhost
+
+test:
+  adapter: postgresql
+  database: fec-graph-search_test
+  host: localhost
+
+production:
+  adapter: postgresql
+  database: fec-graph-search_prod
+  host: localhost
