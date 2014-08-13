@@ -18,10 +18,11 @@ gem 'pundit'
 gem 'simple_form'
 gem 'slim-rails'
 
-# async processing
 gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'sidekiq'
 gem 'sidekiq-failures'
+
+gem 'treetop'
 
 gem 'neography'
 gem 'redis'

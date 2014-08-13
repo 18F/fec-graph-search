@@ -329,5 +329,6 @@ DEPENDENCIES
   slim-rails
   spring
   thin
+  treetop
   turbolinks
   uglifier (>= 1.3.0)
