@@ -17,6 +17,7 @@ gem 'omniauth-github'
 gem 'pundit'
 gem 'simple_form'
 gem 'slim-rails'
+gem 'dotenv-rails', :groups => [:development, :test]
 
 gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'sidekiq'
