@@ -6,6 +6,7 @@ html
       = content_for?(:title) ? yield(:title) : 'Fec Graph Search'
     meta name="description" content="#{content_for?(:description) ? yield(:description) : 'Fec Graph Search'}"
     == stylesheet_link_tag "application", :media => 'all', 'data-turbolinks-track' => true
+    == stylesheet_link_tag '//fonts.googleapis.com/css?family=Oswald|Open+Sans+Condensed:300,700|Open+Sans', :media => 'all'
     == javascript_include_tag 'application', 'data-turbolinks-track' => true
     == csrf_meta_tags
   body

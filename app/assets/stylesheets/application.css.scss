@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+@media(max-width:767px){}
+@media(min-width:768px){}
+@media(min-width:992px){
+  .graph-search #graph-query {
+    min-width: 240px;
+  }
+}
+@media(min-width:1200px){
+  .graph-search #graph-query {
+    min-width: 340px;
+  }
+}
