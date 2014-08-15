@@ -1,0 +1,5 @@
+dump.rdb
+_site
+.bundle
+.env
+config/
