@@ -4,11 +4,16 @@ FEC Graph Search
 Election data can be confusing. Searching through it, shouldn't be. 
 
 
+![Screenshot](http://18f.github.io/fec-graph-search/public/screenshot.png)
+
+
 ## Getting Started
   1. Clone the repository `git clone git@github.com:18F/fec-graph-search.git`
   2. From the project root, install the necessary dependencies with `bundle install`.
-  3. Start the application with `foreman start`. 
-  4. Open the website at [localhost:4000](http://localhost:4000).
+  3. Start Neo4j with `rake neo4j:start` or boot a [docker container](https://github.com/amoose/docker-neo4j) with `vagrant up --provider=docker`
+  4. Start the application with `foreman start`. 
+  5. Open the website at [localhost:4000](http://localhost:4000).
+
 
 
 ## Roadmap 
@@ -16,9 +21,8 @@ Election data can be confusing. Searching through it, shouldn't be.
   - Find entities with natural language (eg. Contributors)
   - Show relationships with natural language (eg. have given money to, supported)
   - Find common relationships (eg. Contributors who have contributed to ____)
+  - Add Travis-CI
 
-These are the initial mockups for the FEC graph search. Note the language of the search strings as well as the autocompletion for entities.
-![FEC Mockups](https://cloud.githubusercontent.com/assets/582918/3690939/61117b26-134d-11e4-9a67-3e3eb0ed08b4.jpg)
 
 
 

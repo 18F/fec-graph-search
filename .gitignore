@@ -79,3 +79,4 @@ pickle-email-*.html
 .powenv
 
 dump.rdb
+_site
