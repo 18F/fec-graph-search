@@ -3,22 +3,50 @@ FEC Graph Search
 
 Election data can be confusing. Searching through it, shouldn't be. 
 
+[![Build Status](https://travis-ci.org/18F/fec-graph-search.svg?branch=develop)](https://travis-ci.org/18F/fec-graph-search)
+
+![Screenshot](http://18f.github.io/fec-graph-search/public/screenshot.png)
+![Screenshot](http://18f.github.io/fec-graph-search/public/screenshot-graph.png)
+
 
 ## Getting Started
-  1. Clone the repository `git clone ...`
+  1. Clone the repository `git clone git@github.com:18F/fec-graph-search.git`
   2. From the project root, install the necessary dependencies with `bundle install`.
-  3. Start the web server with `rails s` and background processing with `bundle exec sidekiq`.
-  4. Open the website at [localhost:3000](http://localhost:3000).
+  3. Start Neo4j with `rake neo4j:start` or boot a [docker container](https://github.com/amoose/docker-neo4j) with `vagrant up --provider=docker`
+  4. Copy over the example files with `cp config/database.yml.example config/database.yml && cp .env.example .env` and update values as necessary.
+  4. Start the application with `foreman start`. 
+  5. Open the website at [localhost:4000](http://localhost:4000).
 
 
-## Roadmap 
+## More Information
 
-  - Find entities with natural language (eg. Contributors)
-  - Show relationships with natural language (eg. have given money to, supported)
+This is an experiment in making sense of the data provided by the [Federal Election Commission](http://www.fec.gov).
+
+**Note:** This project is still in alpha and may never be deployed. We're still investigating the best ways to present this data to the public.
+
+#### The Philosophy
+
+Generate relevant views of FEC data based on real-world search scenarios. 
+
+#### The Solution
+
+
+
+  - Employ a Neo4j graph database and populate with [massaged data](https://github.com/18f/openfec#openfec) to represent our domain entities and their relationships.
+  - Parse query strings using [Treetop](https://github.com/nathansobo/treetop) to define a _parsing expression grammar:_
+    - _Treetop will generate a Ruby parser that transforms streams of characters written into your language into abstract syntax trees representing their structure. You'll then describe the semantics of your language in Ruby by defining methods on the syntax trees the parser generates._
+  - Generate useful output of tabular, graphic and qualitative data. 
+
+
+#### Roadmap 
+
+  - ~~Find entities with natural language (eg. Contributors)~~
+  - ~~Show relationships with natural language (eg. have given money to, supported)~~
   - Find common relationships (eg. Contributors who have contributed to ____)
+  - Typeahead and autocompletion
+  - Visualizations eg. [Timeseries](http://c3js.org/samples/timeseries.html)
+  - Add Travis-CI
 
-These are the initial mockups for the FEC graph search. Note the language of the search strings as well as the autocompletion for entities.
-![FEC Mockups](https://cloud.githubusercontent.com/assets/582918/3690939/61117b26-134d-11e4-9a67-3e3eb0ed08b4.jpg)
 
 
 
@@ -27,7 +55,8 @@ These are the initial mockups for the FEC graph search. Note the language of the
  - Ruby 2 and bundler
  - Neo4j
    - You can install with the included gem via `rake neo4j:install` or try a Docker container launched with Vagrant for instant provisioning, aptly named [docker-neo4j](https://github.com/amoose/docker-neo4j).
- - Redis
+ - Redis `brew install redis`
+ - [Postgres](http://postgresapp.com)
 
 
 

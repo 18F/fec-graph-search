@@ -15,3 +15,14 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+
+
+$(function () {
+  $('.autofiller').click(function (e) {
+    e.preventDefault();
+    $('#graph-query').val($(this).data('autofill'));
+    $('.graph-search form').submit();
+    return false;
+  });
+});
+

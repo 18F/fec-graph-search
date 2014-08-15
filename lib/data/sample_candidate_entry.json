@@ -1,0 +1,46 @@
+{
+    "CAND_ID": "H0AK00097",
+    "FIRST_NAME": "JOHN",
+    "MIDDLE_NAME": "R",
+    "LAST_NAME": "COX",
+    "STREET1": "PO BOX 1092",
+    "CITY": "ANCHOR POINT",
+    "STATE": "AK",
+    "ZIP": "99556",
+    "STATUS": "Not yet a statutory candidate",
+    "STATUS_CODE": "N",
+    "ELECTION": [
+        {
+            "OFFICE": {
+                "TYPE": "HOUSE",
+                "STATE": "AK",
+                "DISTRICT": "00"
+            },
+            "PARTY": {
+                "NAME": "Independent",
+                "ABBRV": "IND"
+            },
+            "ELECTION_YEAR": "2012",
+            "STATUS": "INCUMBENT"
+        },
+        {
+            "OFFICE": {
+                "TYPE": "HOUSE",
+                "STATE": "AK",
+                "DISTRICT": "00"
+            },
+            "PARTY": {
+                "NAME": "Independent",
+                "ABBRV": "IND"
+            },
+            "ELECTION_YEAR": "2012",
+            "STATUS": "INCUMBENT"
+        }
+    ],
+    "PRINCIPAL_COMMITTEE": "C00000001",
+    "AUTHORIZED_COMMITTEES": [
+        "C0000003",
+        "C0000004",
+        "C0000005"
+    ]
+}

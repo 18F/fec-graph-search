@@ -1,6 +1,6 @@
 .graph-search
   fieldset
-    form action="#" method="get" role="form" class="form-inline"
+    form action="#{search_path}" method="get" role="form" class="form-inline"
       .form-group
 
         label class="sr-only" for="graph-query" Search query
@@ -8,6 +8,19 @@
 
         button type="submit" class="btn btn-default" Search
 
-.debug
-  = debug @cypher
-  = debug @q
+        / helpers
+        .auto-helpers
+          a.autofiller.badge href="#" data-autofill="candidates" candidates
+          a.autofiller.badge href="#" data-autofill="candidates named Leslie Knope" candidates named Leslie Knope
+          a.autofiller.badge href="#" data-autofill="candidates named Leslie Knope who live in Indiana" candidates named Leslie Knope who live in Indiana
+          
+
+- if @cypher
+  br
+  .well
+    h3 Cypher Query:
+    samp= raw(@cypher[0])
+    br
+    -if @cypher[1]
+      h4 Parameters:
+      samp= @cypher[1]

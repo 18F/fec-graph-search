@@ -10,7 +10,7 @@ module NGS
      #   [:this, :is, [:a, :test]]
      def self.parse(data)
        # Pass the data over to the parser instance
-       tree = @@parser.parse(data)
+       tree = @@parser.parse(data.downcase)
 
        # If the AST is nil then there was an error during parsing
        # we need to report a simple error message to help the user

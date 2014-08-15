@@ -4,7 +4,7 @@ module Ngs
     def to_cypher
       cypher_hash =  self.elements[0].to_cypher
       cypher_string = ""
-      cypher_string << "START "   + cypher_hash[:start].uniq.join(", ")
+      cypher_string << "START "   + cypher_hash[:start].uniq.join(", ") unless cypher_hash[:start].empty?
       cypher_string << " MATCH "  + cypher_hash[:match].uniq.join(", ") unless cypher_hash[:match].empty?
       cypher_string << " RETURN DISTINCT " + cypher_hash[:return].uniq.join(", ")
       params = cypher_hash[:params].empty? ? {} : cypher_hash[:params].uniq.inject {|a,h| a.merge(h)}
@@ -32,56 +32,67 @@ module Ngs
     end 
   end
 
-  class Friends < Treetop::Runtime::SyntaxNode
-    def to_cypher
-        return {:start  => "me = node({me})", 
-                :match  => "me -[:friends]-> people",
-                :return => "people",
-                :params => {"me" => nil }}
-    end 
-  end
-
-  class Likes < Treetop::Runtime::SyntaxNode
-    def to_cypher
-        return {:match => "people -[:likes]-> thing"}
-    end 
-  end
 
   class Lives < Treetop::Runtime::SyntaxNode
     def to_cypher
         return {:start => "place = node:places({place})",
                 :match => "people -[:lives]-> place",
-                :params => {"place" => "name: " + self.text_value.split("in").last.to_s.strip + "*" } }
+
+                :params => {"place" => "name: " + self.text_value.split("in ").last.to_s.strip + "*" } }
     end 
   end
 
-  class LikeAnd < Treetop::Runtime::SyntaxNode
-    def to_cypher
-        return {:start  => "thing1 = node:things({thing1}), thing2 = node:things({thing2})",
-                :match  => "people -[:likes]-> thing1, people -[:likes]-> thing2",
-                :params => {"thing1" => "name: " + self.elements[1].text_value, "thing2" => "name: " + self.elements.last.text_value} }
-    end 
-  end
-
-  class LikeAndLives < Treetop::Runtime::SyntaxNode
-    def to_cypher
-        return {:start  => "thing = node:things({thing}), place = node:places({place})",
-                :match  => "people -[:likes]-> thing, people -[:lives]-> place",
-                :params => {"thing" => "name: " + self.elements[1].text_value, "place" => "name: " + self.elements.last.text_value.split("in").last.to_s.strip + "*"} }
-    end 
-  end
 
   class Thing < Treetop::Runtime::SyntaxNode
     def to_cypher
         return {:start  => "thing = node:things({thing})",
                 :params => {"thing" => "name: " + self.text_value } }
+
+    end 
+  end
+
+  class Name < Treetop::Runtime::SyntaxNode
+    def to_cypher
+        {
+          :start  => "n = node:Person({query})",
+          :params => {
+            "query" => "name: " + self.text_value
+          },
+          :return => "n"
+        }
+
     end 
   end
 
   class People < Treetop::Runtime::SyntaxNode
     def to_cypher
-        return {#:start => "people = node:people(\"name:*\")",
-                :return => "people"}
+        {
+          :match => "(people:`Person`)",
+          :return => "people"
+        }
+    end 
+  end
+
+  class Candidates < Treetop::Runtime::SyntaxNode
+    def to_cypher
+      {
+        :match => "(people:`Candidate`)",
+        :return => "people"
+      }
+      # {
+      #   :start  => "people = node:Candidate({search})",
+      #   :params => {"search" => "name: " + self.text_value },
+      #   :return => "people"
+      # }
+    end 
+  end
+
+  class Contributors < Treetop::Runtime::SyntaxNode
+    def to_cypher
+        {
+          :match => "(people:`Contributor`)",
+          :return => "people"
+        }
     end 
   end
 

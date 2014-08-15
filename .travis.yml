@@ -1,0 +1,13 @@
+before_script:
+  - cp config/database.yml.example config/database.yml
+  - cp .env.example .env
+  - psql -c 'create database "fec-graph-search_test";' -U postgres
+  - bundle exec rake db:migrate --trace
+  - bundle exec rake db:test:prepare --trace
+bundler_args: --without development
+language: ruby
+rvm:
+  - ruby-2.1.2
+services:
+  - redis
+  - neo4j

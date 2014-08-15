@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.2'
+
 gem 'rails', '4.1.1'
 gem 'pg'
 gem 'sass-rails', '~> 4.0.3'
@@ -28,6 +28,8 @@ gem 'treetop'
 gem 'neography'
 gem 'redis'
 
+gem 'faker'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]
@@ -39,6 +41,9 @@ group :development do
   gem 'foreman'
   gem 'quiet_assets'
   gem 'rails_layout'
+  gem 'guard'
+  gem 'guard-rspec', require: false
+  gem 'growl'
 end
 group :development, :test do
   gem 'factory_girl_rails'
@@ -50,7 +55,6 @@ end
 group :test do
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'faker'
   gem 'launchy'
   gem 'selenium-webdriver'
 end
