@@ -1,52 +1,85 @@
 grammar Ngs
+  rule expression
+    space? '(' body ')' space? <Expression>
+  end
 
-rule expression
-  space? '(' body ')' space? <Expression>
-end
+  rule body
+    (
+      expression
+      /
+      me
+      /
+      (friends / people / candidates)
+      /
+      likeandlives
+      /
+      likeand
+      /
+      likes
+      / 
+      lives
+      / 
+      thing
+      /
+      space
+    )* <Body>
+  end
 
-rule body
-  (expression / me / (friends / people) / likeandlives / likeand / likes / lives / thing / space )* <Body>
-end
-
-rule me
-  "me" <Me>
-end
-
-rule friends
-  "friends" <Friends>
-end
-
-rule likes
-  "who like" <Likes>
-end
-
-rule lives
-  ("who live in" / "live in" ) space place <Lives>
-end
-
-rule likeand
-  likes space thing space "and" space thing <LikeAnd>
-end
-
-rule likeandlives
-  likes space thing space "and" space lives <LikeAndLives>
-end
-
-rule thing
-  [a-zA-Z0-9]+ <Thing>
-end
-
-rule place
-  [a-zA-Z0-9]+
-end
+  rule me
+    "me" <Me>
+  end
 
 
-rule people
-  "people" <People>
-end
+  rule friends
+    "friends" <Friends>
+  end
 
-rule space
-  [\s]+
-end
+  rule candidates
+    "candidates" <Candidates>
+  end
 
+  rule contributors
+    "contributors" <Contributors>
+  end
+
+  rule likes
+    "who like" <Likes>
+  end
+
+  rule contributes
+    "who contribute" <Contributes>
+  end
+
+  rule lives
+    ("who live in" / "live in" ) space place <Lives>
+  end
+
+  rule likeand
+    likes space thing space "and" space thing <LikeAnd>
+  end
+
+  rule likeandlives
+    likes space thing space "and" space lives <LikeAndLives>
+  end
+
+  rule thing
+    [a-zA-Z0-9]+ <Thing>
+  end
+
+  rule place
+    [a-zA-Z0-9]+
+  end
+
+
+  rule people
+    "people" <People>
+  end
+
+  rule space
+    [\s]+
+  end
+
+  rule problems
+    word &{ |s| debugger; true }
+  end
 end

@@ -75,12 +75,27 @@ module Ngs
     def to_cypher
         return {:start  => "thing = node:things({thing})",
                 :params => {"thing" => "name: " + self.text_value } }
+
     end 
   end
 
   class People < Treetop::Runtime::SyntaxNode
     def to_cypher
         return {#:start => "people = node:people(\"name:*\")",
+                :return => "people"}
+    end 
+  end
+
+  class Candidates < Treetop::Runtime::SyntaxNode
+    def to_cypher
+        return {:start => "people = node:people(\"is_candidate:true\")",
+                :return => "people"}
+    end 
+  end
+
+  class Contributors < Treetop::Runtime::SyntaxNode
+    def to_cypher
+        return {:start => "people = node:people(\"is_contributor:true\")",
                 :return => "people"}
     end 
   end

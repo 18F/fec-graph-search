@@ -2,6 +2,10 @@ class VisitorsController < ApplicationController
 
   before_filter :search_params
 
+  def about
+
+  end
+  
   private
   def search_params
     @q = params[:q] || ""

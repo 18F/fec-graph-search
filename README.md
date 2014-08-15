@@ -5,10 +5,10 @@ Election data can be confusing. Searching through it, shouldn't be.
 
 
 ## Getting Started
-  1. Clone the repository `git clone ...`
+  1. Clone the repository `git clone git@github.com:18F/fec-graph-search.git`
   2. From the project root, install the necessary dependencies with `bundle install`.
-  3. Start the web server with `rails s` and background processing with `bundle exec sidekiq`.
-  4. Open the website at [localhost:3000](http://localhost:3000).
+  3. Start the application with `foreman start`. 
+  4. Open the website at [localhost:4000](http://localhost:4000).
 
 
 ## Roadmap 

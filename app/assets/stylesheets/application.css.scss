@@ -18,11 +18,41 @@
 @media(min-width:768px){}
 @media(min-width:992px){
   .graph-search #graph-query {
-    min-width: 240px;
+    min-width: 370px;
   }
 }
 @media(min-width:1200px){
   .graph-search #graph-query {
-    min-width: 340px;
+    min-width: 480px;
+  }
+}
+
+@media(min-width:1400px){
+  .graph-search #graph-query {
+    min-width: 575px;
+  }
+}
+
+.tagline {
+  text-transform: uppercase;
+  color: #c0c0c0;
+  float: right;
+  margin-top: -3.0em;
+}
+.build_info {
+  color: #c0c0c0;
+  float: right;
+  margin-top: -2.0em;
+}
+
+.graph-search .auto-helpers {
+  a.badge {
+    margin: 10px 7px;
+    display: block;
+    float: left;
+    font-weight: normal;
+    &:hover {
+      background-color: #18f;
+    }
   }
 }
