@@ -13,6 +13,12 @@ describe "NGS::Parser" do
       expect(NGS::Parser.parse("(friends)")).to eq([cypher, params])
     end
 
+    it "can return people that are candidates" do
+      cypher = "START people = node:people(\"is_candidate:true\") RETURN DISTINCT people"
+      params = {}
+      expect(NGS::Parser.parse("(candidates)")).to eq([cypher, params])
+    end
+
     it "can return friends who like cheese" do
       cypher = "START me = node({me}), thing = node:things({thing}) MATCH me -[:friends]-> people, people -[:likes]-> thing RETURN DISTINCT people"
       params = {"me" => nil, "thing" => "name: cheese"}
@@ -48,5 +54,19 @@ describe "NGS::Parser" do
       params = {"thing" => "name: cycling", "place" => "name: Florida*"}
       expect(NGS::Parser.parse("(people who like cycling and live in Florida)")).to eq([cypher, params])
     end
+
+    it "can return people who are candidates and live in Florida" do
+      cypher = "START people = node:people(\"is_candidate:true\"), place = node:places({place}) MATCH people -[:lives]-> place RETURN DISTINCT people"
+      params = {"place" => "name: Florida*"}
+      expect(NGS::Parser.parse("(candidates who live in Florida)")).to eq([cypher, params])
+    end
+
+    it "can return candidates named Knope and live in Indiana" do
+      cypher = "START people = node:people(\"is_candidate:true\"), thing = node:things({thing}), place = node:places({place}) MATCH people -[:lives]-> place RETURN DISTINCT people"
+      params = {"thing"=>"name: Knope", "place"=>"name: Indiana*"}
+      expect(NGS::Parser.parse("(candidates named Leslie Knope who live in Indiana)")).to eq([cypher, params])
+    end
+
+
   end
 end
