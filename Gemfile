@@ -28,6 +28,8 @@ gem 'treetop'
 gem 'neography'
 gem 'redis'
 
+gem 'faker'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]
@@ -50,7 +52,6 @@ end
 group :test do
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'faker'
   gem 'launchy'
   gem 'selenium-webdriver'
 end
