@@ -15,12 +15,30 @@ Election data can be confusing. Searching through it, shouldn't be.
   5. Open the website at [localhost:4000](http://localhost:4000).
 
 
+## More Information
 
-## Roadmap 
+This is an experiment in making sense of the data provided by the [Federal Election Commission](http://www.fec.gov).
 
-  - Find entities with natural language (eg. Contributors)
-  - Show relationships with natural language (eg. have given money to, supported)
+**Note:** This project is still in alpha and may never be deployed. We're still investigating the best ways to present this data to the public.
+
+#### The Philosophy
+
+Generate relevant views of FEC data based on real-world search scenarios. 
+
+#### The Solution
+
+  - Employ a Neo4j graph database and populate with [massaged data](https://github.com/18f/openfec#openfec)
+  - Parse query strings using [Treetop](https://github.com/nathansobo/treetop) to define a _parsing expression grammar:_
+    - _Treetop will generate a Ruby parser that transforms streams of characters written into your language into abstract syntax trees representing their structure. You'll then describe the semantics of your language in Ruby by defining methods on the syntax trees the parser generates._
+  - Generate useful output of tabular, graphic and qualitative data. 
+
+
+#### Roadmap 
+
+  - ~~Find entities with natural language (eg. Contributors)~~
+  - ~~Show relationships with natural language (eg. have given money to, supported)~~
   - Find common relationships (eg. Contributors who have contributed to ____)
+  - Typeahead and autocompletion
   - Add Travis-CI
 
 
