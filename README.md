@@ -39,6 +39,7 @@ Generate relevant views of FEC data based on real-world search scenarios.
   - ~~Show relationships with natural language (eg. have given money to, supported)~~
   - Find common relationships (eg. Contributors who have contributed to ____)
   - Typeahead and autocompletion
+  - Visualizations eg. [Timeseries](http://c3js.org/samples/timeseries.html)
   - Add Travis-CI
 
 
