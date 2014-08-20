@@ -5,6 +5,7 @@ Election data can be confusing. Searching through it, shouldn't be.
 
 
 ![Screenshot](http://18f.github.io/fec-graph-search/public/screenshot.png)
+![Screenshot](http://18f.github.io/fec-graph-search/public/screenshot-graph.png)
 
 
 ## Getting Started
@@ -27,7 +28,7 @@ Generate relevant views of FEC data based on real-world search scenarios.
 
 #### The Solution
 
-  - Employ a Neo4j graph database and populate with [massaged data](https://github.com/18f/openfec#openfec)
+  - Employ a Neo4j graph database and populate with [massaged data](https://github.com/18f/openfec#openfec) to represent our domain entities and their relationships.
   - Parse query strings using [Treetop](https://github.com/nathansobo/treetop) to define a _parsing expression grammar:_
     - _Treetop will generate a Ruby parser that transforms streams of characters written into your language into abstract syntax trees representing their structure. You'll then describe the semantics of your language in Ruby by defining methods on the syntax trees the parser generates._
   - Generate useful output of tabular, graphic and qualitative data. 
