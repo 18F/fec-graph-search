@@ -12,8 +12,8 @@ Election data can be confusing. Searching through it, shouldn't be.
 ## Getting Started
   1. Clone the repository `git clone git@github.com:18F/fec-graph-search.git`
   2. From the project root, install the necessary dependencies with `bundle install`.
-  3. Start Neo4j with `rake neo4j:start` or boot a [docker container](https://github.com/amoose/docker-neo4j) with `vagrant up --provider=docker`
-  4. Copy over the example files with `cp config/database.yml.example config/database.yml && cp .env.example .env` and update values as necessary.
+  3. Install and start Neo4j with `rake neo4j:install` and `rake neo4j:start` or boot a [Neo4j docker container](https://github.com/amoose/docker-neo4j) with `vagrant up --provider=docker`
+  4. Copy the example files with `cp config/database.yml.example config/database.yml && cp .env.example .env` and update values as necessary.
   4. Start the application with `foreman start`. 
   5. Open the website at [localhost:4000](http://localhost:4000).
 
