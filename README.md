@@ -42,20 +42,20 @@ Generate relevant views of FEC data based on real-world search scenarios.
 
   - ~~Find entities with natural language (eg. Contributors)~~
   - ~~Show relationships with natural language (eg. have given money to, supported)~~
+  - ~~Add Travis-CI~~
   - Find common relationships (eg. Contributors who have contributed to ____)
   - Typeahead and autocompletion
   - Visualizations eg. [Timeseries](http://c3js.org/samples/timeseries.html)
-  - Add Travis-CI
 
 
 
 
 ## Dependencies
 
- - Ruby 2 and bundler
- - Neo4j
+ - Ruby 2 and bundler - [rbenv](https://github.com/sstephenson/rbenv) or [RVM](http://rvm.io/)
+ - [Neo4j](http://www.neo4j.org/)
    - You can install with the included gem via `rake neo4j:install` or try a Docker container launched with Vagrant for instant provisioning, aptly named [docker-neo4j](https://github.com/amoose/docker-neo4j).
- - Redis `brew install redis`
+ - [Redis](http://redis.io/) - `brew install redis`
  - [Postgres](http://postgresapp.com)
 
 
