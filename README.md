@@ -4,6 +4,8 @@ FEC Graph Search
 Election data can be confusing. Searching through it, shouldn't be. 
 
 [![Build Status](https://travis-ci.org/18F/fec-graph-search.svg?branch=develop)](https://travis-ci.org/18F/fec-graph-search)
+[![Code Climate](https://codeclimate.com/github/18F/fec-graph-search/badges/gpa.svg)](https://codeclimate.com/github/18F/fec-graph-search)
+[![Test Coverage](https://codeclimate.com/github/18F/fec-graph-search/badges/coverage.svg)](https://codeclimate.com/github/18F/fec-graph-search)
 
 ![Screenshot](http://18f.github.io/fec-graph-search/public/screenshot.png)
 ![Screenshot](http://18f.github.io/fec-graph-search/public/screenshot-graph.png)
