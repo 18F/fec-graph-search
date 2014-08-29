@@ -12,10 +12,21 @@ Election data can be confusing. Searching through it, shouldn't be.
 ## Getting Started
   1. Clone the repository `git clone git@github.com:18F/fec-graph-search.git`
   2. From the project root, install the necessary dependencies with `bundle install`.
-  3. Install and start Neo4j with `rake neo4j:install` and `rake neo4j:start` or boot a [Neo4j docker container](https://github.com/amoose/docker-neo4j) with `vagrant up --provider=docker`
+  3. Spin up Neo4j with the [Neo4j docker container](https://github.com/amoose/docker-neo4j): `vagrant up --provider=docker` (from the docker-neo4j project root). Or, install Neo4j locally with `rake neo4j:install` and `rake neo4j:start`. 
   4. Copy the example files with `cp config/database.yml.example config/database.yml && cp .env.example .env` and update values as necessary.
   4. Start the application with `foreman start`. 
   5. Open the website at [localhost:4000](http://localhost:4000).
+
+
+## Dependencies
+
+ - Ruby 2 and bundler - [rbenv](https://github.com/sstephenson/rbenv) or [RVM](http://rvm.io/)
+ - [Neo4j](http://www.neo4j.org/)
+   - You can install with the included gem via `rake neo4j:install` or try a Docker container launched with Vagrant for instant provisioning, aptly named [docker-neo4j](https://github.com/amoose/docker-neo4j).
+ - [Redis](http://redis.io/) - `brew install redis`
+ - [Postgres](http://postgresapp.com)
+
+
 
 
 ## More Information
@@ -47,16 +58,6 @@ Generate relevant views of FEC data based on real-world search scenarios.
   - Typeahead and autocompletion
   - Visualizations eg. [Timeseries](http://c3js.org/samples/timeseries.html)
 
-
-
-
-## Dependencies
-
- - Ruby 2 and bundler - [rbenv](https://github.com/sstephenson/rbenv) or [RVM](http://rvm.io/)
- - [Neo4j](http://www.neo4j.org/)
-   - You can install with the included gem via `rake neo4j:install` or try a Docker container launched with Vagrant for instant provisioning, aptly named [docker-neo4j](https://github.com/amoose/docker-neo4j).
- - [Redis](http://redis.io/) - `brew install redis`
- - [Postgres](http://postgresapp.com)
 
 
 
