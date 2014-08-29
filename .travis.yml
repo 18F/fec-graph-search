@@ -11,3 +11,6 @@ rvm:
 services:
   - redis
   - neo4j
+addons:
+  code_climate:
+    repo_token: d0d76f9cdecf7c06a43ede612fc4be667b21cb7142d896dde21c2771c47b4bdc 
