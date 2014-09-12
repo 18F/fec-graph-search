@@ -1,0 +1,14 @@
+.row
+  .container-fluid
+    .pull-left
+      img src="#{@node['data']['image']}" style="margin-right: 20px;"
+    .pull-left 
+      h3= @node['data']['name'].titleize
+      h4= @node['data']['address'].titleize
+      p= "#{@node['data']['city'].titleize}, #{@node['data']['state'].upcase} #{@node['data']['zip']}"
+   
+
+    br clear="both"
+
+
+    = debug @node

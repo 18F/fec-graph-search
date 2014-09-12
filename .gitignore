@@ -80,3 +80,5 @@ pickle-email-*.html
 
 dump.rdb
 _site
+
+/config/deploy/production.rb

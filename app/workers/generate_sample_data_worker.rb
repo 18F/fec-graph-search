@@ -4,16 +4,7 @@ class GenerateSampleDataWorker
 
   def perform
     5.times do
-      options = {
-        :person => fake_person_options,
-        :principal_committee => fake_company_options,
-        :authorized_committees => []
-      }
-
-      range = *(0..5)
-      range.sample.times do
-        options[:authorized_committees] << fake_company_options
-      end
+      options = generate_fake_options
 
       ImportCandidateWorker.perform_async(options)
     end
@@ -42,5 +33,18 @@ class GenerateSampleDataWorker
       :candidate_id => Faker::Lorem.characters(10).upcase,
       :is_candidate => true
     }
+  end
+
+  def generate_fake_options
+    options = {
+      :person => fake_person_options,
+      :principal_committee => fake_company_options,
+      :authorized_committees => []
+    }
+    range = *(0..5)
+    range.sample.times do
+      options[:authorized_committees] << fake_company_options
+    end
+    options
   end
 end

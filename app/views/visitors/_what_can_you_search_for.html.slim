@@ -1,0 +1,46 @@
+.row
+  .col-md-12
+    hr
+    br
+    h2= "*What you can search"
+
+    p Use this reference to look up candidates, committees, transactions and the relationships between all three.
+    br
+
+.row
+  .col-md-4.pretty-box
+    .teal-border.pull-right
+      = image_tag 'transactions.jpg'
+      .info
+        p
+          | Money given to a committee, including a candidate's principal campaign committee.
+        ul
+          li 
+            | contributions to candidates named Barack Obama
+          li
+            | committees who gave to candidates named Barack Obama
+          li
+            | contributions to committees in Florida
+
+  .col-md-4.pretty-box
+    .blue-border style="margin: auto;"
+      = image_tag 'candidates.jpg'
+      .info
+        p
+          | Someone running for office. Candidates receive and spend money via their Principal Campaign Committee.
+        ul
+          li
+            | candidates named Barack Obama
+
+
+  .col-md-4.pretty-box
+    .salmon-border.pull-left
+      = image_tag 'committees.jpg'
+      .info
+        p
+          | An organization involved in an election. May be officially affiliated with a candidate or not. 
+        ul
+          li
+            | committees who support candidates named Jeff
+          li
+            | committees named A Group Of People For Jeff

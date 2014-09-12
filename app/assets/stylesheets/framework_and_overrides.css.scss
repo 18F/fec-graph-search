@@ -34,10 +34,9 @@ img {
 // to make views framework-neutral
 main {
   @extend .container;
-  background-color: #eee;
+  background-color: #FFFFFF;
   padding-bottom: 80px;
   width: 100%;
-  margin-top: 120px; // accommodate the navbar
   }
 section {
   @extend .row;
@@ -93,19 +92,20 @@ a.navbar-brand,
 a.navbar-brand:link {
   color: #18f !important;
   font-size: 2.0em;
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   margin-right: 40px;
+  font-weight: 700;
   &:hover {
-    background: #18f !important;
-    color: #222222 !important;
+    // background: #18f !important;
+    // color: #222222 !important;
   }
 }
 
-h1, h2, h3, h4, h5 {
+h1, h2, h3, h5 {
   font-family: 'Oswald', sans-serif;
 }
 body {
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: 'Open Sans Condensed', sans-serif !important;
   nav {
     position: relative;
     .beta-flag {
@@ -123,11 +123,13 @@ body {
   .graph-search {
     form {
       #graph-query {
-        font-size: 1.6em;
-        padding: 20px 20px
+        // font-size: 1.6em;
+        // padding: 20px 20px
       }
       .btn {
         padding: 10px 12px;
+        position: absolute;
+        top: 16px;
       }
     }
   }
@@ -140,3 +142,41 @@ body {
   min-height: 40px;
   margin: 10px;
 }
+
+
+$teal: #57bcb2;
+$blue: #2a354c;
+$salmon: #ec5759;
+.teal {
+  color: $teal;
+}
+.teal-border {
+  border: 1px solid $teal;
+}
+.blue {
+  color: $blue;
+}
+.blue-border {
+  border: 1px solid $blue;
+}
+.salmon {
+  color: $salmon;
+}
+.salmon-border {
+  border: 1px solid $salmon;
+}
+.teal-border,
+.salmon-border,
+.blue-border {
+  width: 321px;
+  .info {
+    padding: 10px 15px;
+    p {
+      font-size: 1.4em;
+    }
+    ul {
+      font-size: 1.2em;
+    }
+  }
+}
+.form-inline input.form-control { width: 100%; }

@@ -9,7 +9,7 @@ feature 'Sign in', :omniauth do
   #   And I am not signed in
   #   When I sign in
   #   Then I see a success message
-  scenario "user can sign in with valid account" do
+  xscenario "user can sign in with valid account" do
     signin
     expect(page).to have_content("Sign out")
   end
@@ -19,7 +19,7 @@ feature 'Sign in', :omniauth do
   #   And I am not signed in
   #   When I sign in
   #   Then I see an authentication error message
-  scenario 'user cannot sign in with invalid account' do
+  xscenario 'user cannot sign in with invalid account' do
     OmniAuth.config.mock_auth[:github] = :invalid_credentials
     visit root_path
     expect(page).to have_content("Sign in")

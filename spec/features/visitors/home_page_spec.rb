@@ -10,7 +10,7 @@ feature 'Home page' do
   #   Then I see "Welcome"
   scenario 'visit the home page' do
     visit root_path
-    expect(page).to have_content 'Graph Search'
+    expect(page).to have_content 'Search for whatever you like'
   end
 
 end

@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   get '/signout' => 'sessions#destroy', :as => :signout
   get '/auth/failure' => 'sessions#failure'
 
+  match '/nodes/:id' => 'nodes#show', :via => :get
+
   mount Sidekiq::Web => '/sidekiq'
 end

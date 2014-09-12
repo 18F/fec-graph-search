@@ -1,0 +1,8 @@
+tr
+  td
+    img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&f=y&s=75"
+  td= committee['data']['name'].titleize
+  td= committee['data']['address'].titleize
+  td= "#{committee['data']['city'].titleize}, #{committee['data']['state'].upcase} #{committee['data']['zip']}"
+  td
+    a href="#{committee['all_relationships']}" class="ajax" View Relationships

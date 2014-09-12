@@ -1,0 +1,13 @@
+.person
+  .pull-left
+    img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&f=y&s=100"
+  .pull-left
+    h4= person['data']['name'].titleize
+    span= person['data']['address'].titleize
+    span= "#{person['data']['city'].titleize}, #{person['data']['state'].upcase} #{person['data']['zip']}"
+    span= "Candidate? #{person['data']['is_candidate']}"
+    span= "Candidate ID: #{person['data']['candidate_id'].upcase}" if person['data']['is_candidate']
+
+    hr
+
+    a href="#{person['all_relationships']}" View all relationships

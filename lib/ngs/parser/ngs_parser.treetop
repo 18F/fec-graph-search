@@ -9,13 +9,17 @@ grammar Ngs
       /
       me
       /
-      (people / candidates / contributors)
+      (people / candidates_named / candidates / committees_named / committees / contributors_named / contributors)
       / 
+      who_support
+      /
       lives
       /
       space
       /
-      name
+      (candidates / committees)
+      #/
+      #name
     )* <Body>
   end
 
@@ -23,9 +27,16 @@ grammar Ngs
     "me" <Me>
   end
 
-
   rule candidates
     "candidates" <Candidates>
+  end
+
+  rule candidates_named
+    "candidates named" space name <Candidates>
+  end
+
+  rule contributors_named
+    "contributors named" <Contributors>
   end
 
   rule contributors
@@ -34,6 +45,14 @@ grammar Ngs
 
   rule contributes
     "who contribute" <Contributes>
+  end
+
+  rule committees
+    "committees" <Committees>
+  end
+
+  rule committees_named
+    "committees named" space name <Committees>
   end
 
   rule lives
@@ -49,9 +68,12 @@ grammar Ngs
   end
 
   rule name
-    [a-zA-Z0-9_ ] <Name>
+    [a-zA-Z0-9_]+
   end
 
+  rule who_support
+    "who support" <Supports>
+  end
 
   rule people
     "people" <People>

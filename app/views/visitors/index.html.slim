@@ -1,21 +1,66 @@
 .container-fluid
   .row
-    .col-md-6.col-md-offset-3.graph-search-container
-      h1 Graph Search
+    .col-md-8.col-md-offset-2
+      h3 Search for whatever you like*
+      h4 Find who gave money or received money in recent elections
       .tagline Beta
       .build_info= "Build #{GIT_COMMIT} | #{Rails.env}"
 
 
+  .row
+    .col-md-8.col-md-offset-2.graph-search-container
       = render :partial => 'graph_search'
 
-- if @people
-  .container-fluid
-    .row
-      - @people.each do |person|
-        /h3= person['data']['name']
-        =debug person
+  .row
+    .col-md-8.col-md-offset-2.graph-search-container
+      h3 Or view a recent search
+      = render :partial => 'recent_searches'
 
-- if @results
-  = debug @results
-  h4= @results.try(:message)
-  = debug @people
+  - if @results.nil?
+    = render :partial => 'what_can_you_search_for'
+  - elsif @results.size > 0
+    - first_item = @results.first.first
+    - if first_item['data']['is_candidate']
+      h3
+        | Candidates
+    - else
+      h3
+        | Committees
+    table.table.table-striped
+      thead
+        tr
+          th
+            | Image
+          th
+            | Name
+          th
+            | Address
+          th
+            | City, State Zip
+          th
+            | More
+      tbody
+        - @results.each do |result|
+          - item = result.first
+          - if item['data']['is_candidate']
+            = render :partial => 'person', :locals => { :person => item }
+          - else
+            = render :partial => 'committee', :locals => { :committee => item }
+  - else
+    h3= raw "Sorry, no matches for <i>#{params[:q]}</i>"
+
+
+    / - if @results.first.size == 2
+    /   - @results.each do |result|
+    /     .row
+    /       - result.each do |item|
+    /         - if item['data']['is_candidate']
+    /           = render :partial => 'person', :locals => { :person => item }
+    /         - else
+    /           = render :partial => 'committee', :locals => { :committee => item }
+    / - else
+
+    /   - @results.each do |result|
+    /     = render :partial => 'person', :locals => { :person => result.first }
+
+  

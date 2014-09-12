@@ -14,22 +14,27 @@
  *= require_self
  */
 
-@media(max-width:767px){}
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+@media(max-width:767px){
+  .build_info, .tagline { display: none; }
+}
 @media(min-width:768px){}
 @media(min-width:992px){
   .graph-search #graph-query {
-    min-width: 370px;
+    // min-width: 370px;
   }
 }
 @media(min-width:1200px){
   .graph-search #graph-query {
-    min-width: 480px;
+    // min-width: 480px;
   }
 }
 
 @media(min-width:1400px){
   .graph-search #graph-query {
-    min-width: 575px;
+    // min-width: 575px;
   }
 }
 
@@ -54,5 +59,40 @@
     &:hover {
       background-color: #18f;
     }
+  }
+}
+
+#debug {
+  background: white;
+  padding: 10px;
+  border: 1px solid black;
+  h3 {
+    margin-top: 0;
+  }
+}
+
+.person {
+  border: 1px solid #eee;
+  padding: 20px;
+  margin: 20px;
+  float: left;
+  img {
+    float: left;
+    margin-right: 2.0em;
+  }
+  span {
+    display: block;
+  }
+  h4 {
+    margin-top: 0;
+  }
+}
+
+.recent-searches {
+  font-size: 1.4em;
+  ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
   }
 }

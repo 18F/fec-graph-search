@@ -1,0 +1,7 @@
+.recent-searches
+  ul
+    - @recent_searches.each do |search|
+      li
+        a href="#" class="autofiller" data-autofill="#{search.query}" #{search.query.gsub('_',' ')} &raquo;
+
+

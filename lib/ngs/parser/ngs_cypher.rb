@@ -4,9 +4,25 @@ module Ngs
     def to_cypher
       cypher_hash =  self.elements[0].to_cypher
       cypher_string = ""
-      cypher_string << "START "   + cypher_hash[:start].uniq.join(", ") unless cypher_hash[:start].empty?
-      cypher_string << " MATCH "  + cypher_hash[:match].uniq.join(", ") unless cypher_hash[:match].empty?
-      cypher_string << " RETURN DISTINCT " + cypher_hash[:return].uniq.join(", ")
+      if cypher_hash[:start].empty?
+        # cypher_string = "START n(`Person`)"
+      else
+        cypher_string << "START "   + cypher_hash[:start].uniq.join(", ") 
+      end
+      
+      if cypher_hash[:match].empty?
+        # cypher_string << "MATCH (n:`Person`)"
+      else
+        cypher_string << " MATCH "  + cypher_hash[:match].uniq.join(", ") unless cypher_hash[:match].empty?
+      end
+      
+
+      if cypher_hash[:return].empty?
+        cypher_string << " RETURN DISTINCT n"
+      else
+        cypher_string << " RETURN DISTINCT " + cypher_hash[:return].uniq.join(", ")
+      end
+      
       params = cypher_hash[:params].empty? ? {} : cypher_hash[:params].uniq.inject {|a,h| a.merge(h)}
       return [cypher_string, params].compact
     end
@@ -54,11 +70,11 @@ module Ngs
   class Name < Treetop::Runtime::SyntaxNode
     def to_cypher
         {
-          :start  => "n = node:Person({query})",
+          :start  => "people = node:people({query})",
           :params => {
-            "query" => "name: " + self.text_value
+            "query" => "name: " + self.text_value.split("named ").last.to_s.strip.gsub('_','*') + "*"
           },
-          :return => "n"
+          :return => "people"
         }
 
     end 
@@ -67,8 +83,11 @@ module Ngs
   class People < Treetop::Runtime::SyntaxNode
     def to_cypher
         {
-          :match => "(people:`Person`)",
-          :return => "people"
+          :start  => "people = node:people({query})",
+          :return => "people",
+          :params => {
+            "query" => "name: *" + self.text_value.split("named ").last.to_s.strip.gsub("people","") + "*"
+          }
         }
     end 
   end
@@ -76,23 +95,44 @@ module Ngs
   class Candidates < Treetop::Runtime::SyntaxNode
     def to_cypher
       {
-        :match => "(people:`Candidate`)",
-        :return => "people"
+        :start  => "people = node:candidates({candidate})",
+        :return => "people",
+        :params => {
+            "candidate" => "name: *" + self.text_value.split("named ").last.to_s.strip.gsub("_","*").gsub("candidates","") + "*"
+          }
       }
-      # {
-      #   :start  => "people = node:Candidate({search})",
-      #   :params => {"search" => "name: " + self.text_value },
-      #   :return => "people"
-      # }
+    end 
+  end
+
+  class Committees < Treetop::Runtime::SyntaxNode
+    def to_cypher
+      {
+        :start  => "committees = node:committees({committee})",
+        :return => "committees",
+        :params => {
+            "committee" => "name: *" + self.text_value.split("named ").last.to_s.strip.gsub("_","*").gsub("committees","") + "*"
+          }
+      }
     end 
   end
 
   class Contributors < Treetop::Runtime::SyntaxNode
     def to_cypher
-        {
-          :match => "(people:`Contributor`)",
-          :return => "people"
-        }
+      {
+        :start  => "people = node:contributors({query})",
+        :return => "people",
+        :params => {
+            "query" => "name: *" + self.text_value.split("named ").last.to_s.strip.gsub("_","*").gsub("contributors","") + "*"
+          }
+      }
+    end 
+  end
+
+  class Supports < Treetop::Runtime::SyntaxNode
+    def to_cypher
+      {
+        :match => "committees -[:supports]-> candidates"
+      }
     end 
   end
 

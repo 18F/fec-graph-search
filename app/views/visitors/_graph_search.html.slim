@@ -1,23 +1,32 @@
 .graph-search
   fieldset
     form action="#{search_path}" method="get" role="form" class="form-inline"
-      .form-group
+      .full-width
 
         label class="sr-only" for="graph-query" Search query
         input type="text" placeholder="Start searching..." name="q" class="form-control" id="graph-query" value="#{@q}"
 
-        button type="submit" class="btn btn-default" Search
+        button type="submit" class="btn btn-primary" Search
 
-        / helpers
+        helpers
         .auto-helpers
-          a.autofiller.badge href="#" data-autofill="candidates" candidates
-          a.autofiller.badge href="#" data-autofill="candidates named Leslie Knope" candidates named Leslie Knope
-          a.autofiller.badge href="#" data-autofill="candidates named Leslie Knope who live in Indiana" candidates named Leslie Knope who live in Indiana
+          a.autofiller.badge href="#" data-autofill="committees named Americans_for_Prosperity" committees named Americans for Prosperity
+          a.autofiller.badge href="#" data-autofill="candidates named jeff" candidates named Jeff
+          a.autofiller.badge href="#" data-autofill="committees named Bailey_Inc who support candidates named Jeff_Jones" committees named Bailey Inc who support candidates named Jeff Jones
+        /   a.autofiller.badge href="#" data-autofill="candidates" candidates
+        /   a.autofiller.badge href="#" data-autofill="candidates named Leslie Knope" candidates named Leslie Knope
+        /   a.autofiller.badge href="#" data-autofill="candidates named Leslie Knope who live in Indiana" candidates named Leslie Knope who live in Indiana
           
+
 
 - if @cypher
   br
-  .well
+  br
+  button type="button" class="btn btn-default pull-right" data-toggle="collapse" data-target="#debug" Toggle cypher query
+
+  br clear="both"
+
+  .collapse#debug
     h3 Cypher Query:
     samp= raw(@cypher[0])
     br
