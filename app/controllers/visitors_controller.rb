@@ -29,9 +29,9 @@ class VisitorsController < ApplicationController
           
         rescue Excon::Errors::SocketError => e
           flash.now[:error] = "Oops! Neo4j is currently unavailable. Please try your query again later."
-        rescue Exception => e
-          @cypher = ["Sorry, I didn't understand, please try a different search."]
-          @results = []
+        # rescue Exception => e
+        #   @cypher = ["Sorry, I didn't understand, please try a different search."]
+        #   @results = []
         ensure
           @results ||= []
         end
