@@ -65,5 +65,5 @@ end
 
 after :deploy, 'deploy:restart'
 after :deploy, 'deploy:cleanup'
-after :deploy, 'sidekiq:stop'
+before :deploy, 'sidekiq:stop'
 after :deploy, 'sidekiq:start'
