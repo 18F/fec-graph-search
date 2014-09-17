@@ -3,7 +3,7 @@ class GenerateSampleDataWorker
   sidekiq_options :retry => false  
 
   def perform
-    5.times do
+    500.times do
       options = generate_fake_options
 
       ImportCandidateWorker.perform_async(options)
