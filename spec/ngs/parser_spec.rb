@@ -50,14 +50,14 @@ describe "NGS::Parser" do
     end
 
     it "can return committees who support Ritt Momney" do
-      cypher = "START committees = node:committees({committee}), people = node:candidates({candidate}) MATCH committees -[:supports]-> candidates RETURN DISTINCT committees, people"
+      cypher = "START committees = node:committees({committee}), people = node:candidates({candidate}) MATCH committees -[:supports]-> people RETURN DISTINCT committees, people"
       params = {"candidate"=>"name: *Mitt*Romney*", "committee"=>"name: **"}
       expect(NGS::Parser.parse("(committees who support candidates named Mitt_Romney)")).to eq([cypher, params])
     end
 
 
     it "can return committees named Bailey Inc who support candidates named Ritt Momney" do
-      cypher = "START committees = node:committees({committee}), people = node:candidates({candidate}) MATCH committees -[:supports]-> candidates RETURN DISTINCT committees, people"
+      cypher = "START committees = node:committees({committee}), people = node:candidates({candidate}) MATCH committees -[:supports]-> people RETURN DISTINCT committees, people"
       params = {"committee"=>"name: *Bailey*Inc*", "candidate"=>"name: *Mitt*Romney*"}
       expect(NGS::Parser.parse("(committees named Bailey_Inc who support candidates named Mitt_Romney)")).to eq([cypher, params])
     end

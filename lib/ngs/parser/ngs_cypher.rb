@@ -131,7 +131,7 @@ module Ngs
   class Supports < Treetop::Runtime::SyntaxNode
     def to_cypher
       {
-        :match => "committees -[:supports]-> candidates"
+        :match => "committees -[:supports]-> people"
       }
     end 
   end
